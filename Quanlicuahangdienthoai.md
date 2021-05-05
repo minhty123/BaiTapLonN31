@@ -30,3 +30,12 @@ void nhapchitiet(DIENTHOAI*dienthoai){
 	printf("gia tien:\n");
 	gets(dienthoai->giatien);
 }
+void nhapdienthoai(DIENTHOAI*dienthoai,int &somau){
+	printf("nhap so mau:");
+	scanf("%d",&somau);
+	for(i=0;i<somau;i++){
+		fflush(stdin);
+		nhapchitiet(dienthoai+i);
+	}
+	return;
+}
