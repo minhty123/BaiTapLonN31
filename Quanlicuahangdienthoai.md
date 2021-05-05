@@ -39,3 +39,11 @@ void nhapdienthoai(DIENTHOAI*dienthoai,int &somau){
 	}
 	return;
 }
+void xuatdienthoai(DIENTHOAI*dienthoai,int &somau){
+	printf("ma dien thoai\t || ten dien thoai\t || he dieu hanh\t || gia tien\t || so luong\n");
+	for(i=0;i<somau;i++){
+		printf("%c\t || %c\t || %c\t || %f\t || %d\t\n",(dienthoai+i)->ma,(dienthoai+i)->ten,(dienthoai+i)->hedieuhanh,(dienthoai+i)->giatien,(dienthoai+i)->soluong);
+	}
+	return;
+	}
+}
