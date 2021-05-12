@@ -17,7 +17,15 @@ void menu(DIENTHOAI dienthoai[],int somau);
 void sapxepma(DIENTHOAI dienthoai[],int somau);
 void sapxepten(DIENTHOAI dienthoai[],int somau);
 void sapxephedieuhanh(DIENTHOAI dienthoai[],int somau);
-int main
+int main(){
+	FILE*file;
+	DIENTHOAI dienthoai[100];
+	int DTcantim;
+	int i;
+	int somau;
+	nhapdienthoai(dienthoai,somau);
+	menu(dienthoai,somau);
+}
 void nhap(DIENTHOAI dienthoai[]){
     printf("ma dien thoai:");
     fflush(stdin);
@@ -43,4 +51,11 @@ void nhapdienthoai(DIENTHOAI dienthoai[],int &somau){
 		printf("\t\t------nhap thong tin dien thoai %d-------\n",i+1);
 		nhap(&(dienthoai[i]));
 	}
+}
+void xuatdienthoai(DIENTHOAI dienthoai[],int &somau){
+	printf("ma dien thoai || ten dien thoai || he dieu hanh || gia tien || so luong\n");
+	for(int i=0;i<somau;i++){
+		printf("%s\t || %s\t || %s\t || %2f\t || %d\n",dienthoai[i].id,&dienthoai[i].ten,dienthoai[i].hedieuhanh,dienthoai[i].giatien,dienthoai[i].soluong);
+	}
+	return;
 }
