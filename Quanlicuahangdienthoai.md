@@ -13,12 +13,12 @@ struct DIENTHOAI{
 void nhap(DIENTHOAI dienthoai[]);
 void nhapdienthoai(DIENTHOAI dienthoai[],int &somau);
 void xuatdienthoai(DIENTHOAI dienthoai[],int &somau);
-void menu(DIENTHOAI dienthoai[],int somau);
+void menu(DIENTHOAI dienthoai[],int DTcanxoa,int somau);
 void sapxepma(DIENTHOAI dienthoai[],int somau);
 void sapxepten(DIENTHOAI dienthoai[],int somau);
 void sapxephedieuhanh(DIENTHOAI dienthoai[],int somau);
+void xoadienthoai(DIENTHOAI dienthoai[],int DTcanxoa,int &somau);
 int main(){
-	FILE*file;
 	DIENTHOAI dienthoai[100];
 	int DTcantim;
 	int i;
@@ -93,4 +93,45 @@ void sapxepten(DIENTHOAI dienthoai[],int somau){
 			}
 		}
 	}
+}
+void menu(DIENTHOAI dienthoai[],int DTcanxoa,int somau){
+	int luachon;
+	do{
+	    printf("---------------------MENU--------------------\n");
+	    printf("1.Xuat cac mau Dien Thoai\n");
+	    printf("2.Sap xep theo He Dieu Hanh\n");
+	    printf("3.Sap xep theo Ten Dien Thoai\n");
+	    printf("4.Sap xep theo id Dien Thoai\n");
+	    printf("5.Xoa Thong tin Dien Thoai\n");
+	    printf("6.Thoat!\n");
+	    printf("-->lua chon cua ban:");
+	    scanf("%d",&luachon);
+    	switch(luachon){
+	    	case 1:
+			    xuatdienthoai(dienthoai,somau);
+			    break;
+	    	case 2:
+		        sapxephedieuhanh(dienthoai,somau);
+		        xuatdienthoai(dienthoai,somau);
+			    break;
+	    	case 3:
+		        sapxepten(dienthoai,somau);
+		        xuatdienthoai(dienthoai,somau);
+		    	break;
+    		case 4:
+		        sapxepid(dienthoai,somau);
+		        xuatdienthoai(dienthoai,somau);
+		    	break;
+		case 5:
+			xoadienthoai(dienthoai,DTcanxoa,somau);
+			xuatdienthoai(dienthoai,somau);
+			break;
+	        case 6:
+			printf("ban da thoat!\n");
+			break;	
+	    	default:
+		        printf("hay nhap lai!\n");
+		    	break;
+	    }
+	}while(luachon !=6);
 }
