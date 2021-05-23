@@ -3,9 +3,10 @@
 #include<iostream>
 #include<string.h>
 #include<stdlib.h>
+#define MAX 1000
 struct DIENTHOAI{
 	char ten[30];
-	char id[10];
+	char id[30];
 	int soluong;
 	float giatien;
 	char hedieuhanh[30];
@@ -13,18 +14,22 @@ struct DIENTHOAI{
 void nhap(DIENTHOAI dienthoai[]);
 void nhapdienthoai(DIENTHOAI dienthoai[],int &somau);
 void xuatdienthoai(DIENTHOAI dienthoai[],int &somau);
-void menu(DIENTHOAI dienthoai[],int DTcanxoa,int somau);
-void sapxepma(DIENTHOAI dienthoai[],int somau);
+void menu(DIENTHOAI dienthoai[],int DTcanxoa,char DTcantim[],int somau,char fileName[]);
+void sapxepid(DIENTHOAI dienthoai[],int somau);
 void sapxepten(DIENTHOAI dienthoai[],int somau);
 void sapxephedieuhanh(DIENTHOAI dienthoai[],int somau);
+int thongke(DIENTHOAI dienthoai[],int somau,char DTcantim[]);
+void Inthongke(DIENTHOAI dienthoai[],int somau,char DTcantim[]);
 void xoadienthoai(DIENTHOAI dienthoai[],int DTcanxoa,int &somau);
+void xuatFile(DIENTHOAI dienthoai[], int somau, char fileName[]);
 int main(){
-	DIENTHOAI dienthoai[100];
-	int DTcantim;
+	DIENTHOAI dienthoai[MAX];
+        char fileName[]= "DSDT.txt";
+	int DTcanxoa;
+	char DTcantim[MAX];
 	int i;
 	int somau;
-	nhapdienthoai(dienthoai,somau);
-	menu(dienthoai,somau);
+	menu(dienthoai,DTcanxoa,DTcantim,somau,fileName);
 }
 void nhap(DIENTHOAI dienthoai[]){
 	printf("id dien thoai:");
@@ -92,6 +97,23 @@ void sapxepten(DIENTHOAI dienthoai[],int somau){
 				dienthoai[j]=temp;
 			}
 		}
+	}
+}
+int thongke(DIENTHOAI dienthoai[],int somau,char DTcantim[]){
+	int Dem = 0;
+	for(int i=0;i< somau;i++){
+		if(strcmp(dienthoai[i].hedieuhanh,DTcantim)==0){
+			Dem++;
+		}
+	}
+	return Dem;
+}
+void Inthongke(DIENTHOAI dienthoai[],int somau,char DTcantim[]){
+	if(somau != 0){
+		DTcantim="Ios";
+		printf("Co %d Mau Dien Thoai thuoc HDH %s!\n",thongke(dienthoai,somau,DTcantim),DTcantim);
+		DTcantim="Android";
+		printf("Co %d Mau Dien Thoai thuoc HDH %s!\n",thongke(dienthoai,somau,DTcantim),DTcantim);
 	}
 }
 void menu(DIENTHOAI dienthoai[],int DTcanxoa,int somau){
