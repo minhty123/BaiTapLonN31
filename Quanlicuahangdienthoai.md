@@ -11,59 +11,62 @@ struct DIENTHOAI{
 	float giatien;
 	char hedieuhanh[30];
 };
-void nhap(DIENTHOAI dienthoai[]);
-void nhapdienthoai(DIENTHOAI dienthoai[],int &somau);
-void xuatdienthoai(DIENTHOAI dienthoai[],int &somau);
-void menu(DIENTHOAI dienthoai[],int DTcanxoa,char DTcantim[],int somau,char fileName[]);
-void sapxepid(DIENTHOAI dienthoai[],int somau);
-void sapxepten(DIENTHOAI dienthoai[],int somau);
-void sapxephedieuhanh(DIENTHOAI dienthoai[],int somau);
-int thongke(DIENTHOAI dienthoai[],int somau,char DTcantim[]);
+void Nhap(DIENTHOAI dienthoai[]);
+void Nhapdienthoai(DIENTHOAI dienthoai[],int &somau);
+void Xuatdienthoai(DIENTHOAI dienthoai[],int &somau);
+void Menu(DIENTHOAI dienthoai[],int DTcanxoa,char DTcantim[],int somau,char fileName[]);
+void Sapxepid(DIENTHOAI dienthoai[],int somau);
+void Sapxepten(DIENTHOAI dienthoai[],int somau);
+void Sapxephedieuhanh(DIENTHOAI dienthoai[],int somau);
+int Thongke(DIENTHOAI dienthoai[],int somau,char DTcantim[]);
 void Inthongke(DIENTHOAI dienthoai[],int somau,char DTcantim[]);
-void xoadienthoai(DIENTHOAI dienthoai[],int DTcanxoa,int &somau);
-void xuatFile(DIENTHOAI dienthoai[], int somau, char fileName[]);
+void Suadienthoai(DIENTHOAI dienthoai[],int somau);
+void Xoadienthoai(DIENTHOAI dienthoai[],int DTcanxoa,int &somau);
+void XuatFile(DIENTHOAI dienthoai[], int somau, char fileName[]);
 int main(){
 	DIENTHOAI dienthoai[MAX];
         char fileName[]= "DSDT.txt";
 	int DTcanxoa;
-	char DTcantim[MAX];
+	char DTcantim[30];
 	int i;
 	int somau;
-	menu(dienthoai,DTcanxoa,DTcantim,somau,fileName);
+	Menu(dienthoai,DTcanxoa,DTcantim,somau,fileName);
 }
-void nhap(DIENTHOAI dienthoai[]){
-	printf("id dien thoai:");
+void Nhap(DIENTHOAI dienthoai[]){
+	printf("Id Dien Thoai:");
 	fflush(stdin);
 	gets(dienthoai->id);
-	printf("ten dien thoai:");
+	printf("Ten Dien Thoai:");
 	gets(dienthoai->ten);
-	printf("he dieu hanh:");
+	printf("He Dieu Hanh:");
 	gets(dienthoai->hedieuhanh);
-	printf("so luong dien thoai:");
+	printf("So luong Dien Thoai:");
 	scanf("%d",&dienthoai->soluong);
-	printf("gia tien:");
+	printf("Gia tien:");
 	scanf("%f",&dienthoai->giatien);
 }
-void nhapdienthoai(DIENTHOAI dienthoai[],int &somau){
+void Nhapdienthoai(DIENTHOAI dienthoai[],int &somau){
 	do{
 	    printf("--->nhap so mau:");
 	    scanf("%d",&somau);
 	    if(somau <= 0){
 	    	printf("vui long nhap lai!\n");
+	    }
 	}while(somau <= 0);
 	for(int i=0;i<somau;i++){
 		printf("\t\t------nhap thong tin dien thoai %d-------\n",i+1);
-		nhap(&(dienthoai[i]));
+		Nhap(&(dienthoai[i]));
 	}
 }
-void xuatdienthoai(DIENTHOAI dienthoai[],int &somau){
-	printf("ma dien thoai || ten dien thoai || he dieu hanh || gia tien || so luong\n");
+void Xuatdienthoai(DIENTHOAI dienthoai[],int &somau){
+	printf("------------------------------BANG DIEN THOAI-------------------------------\n");
+	printf("ID\t||Ten Dien Thoai\t||He Dieu Hanh\t||So luong\t||Gia Tien \n");
 	for(int i=0;i<somau;i++){
-		printf("%s\t || %s\t || %s\t || %2f\t || %d\n",dienthoai[i].id,&dienthoai[i].ten,dienthoai[i].hedieuhanh,dienthoai[i].giatien,dienthoai[i].soluong);
+		printf("%-3s\t||%-17s\t||%-7s\t||%d\t\t||%0.1f\n",dienthoai[i].id,&dienthoai[i].ten,dienthoai[i].hedieuhanh,dienthoai[i].soluong,dienthoai[i].giatien);
 	}
 	return;
 }
-void sapxepid(DIENTHOAI dienthoai[],int somau){
+void Sapxepid(DIENTHOAI dienthoai[],int somau){
 	DIENTHOAI temp;
 	for(int i=0;i<somau-1;i++){
 		for(int j=i+1;j<somau;j++){
@@ -75,7 +78,7 @@ void sapxepid(DIENTHOAI dienthoai[],int somau){
 		}
 	}
 }
-void sapxephedieuhanh(DIENTHOAI dienthoai[],int somau){
+void Sapxephedieuhanh(DIENTHOAI dienthoai[],int somau){
 	DIENTHOAI temp;
 	for(int i=0;i<somau-1;i++){
 		for(int j=i+1;j<somau;j++){
@@ -87,7 +90,7 @@ void sapxephedieuhanh(DIENTHOAI dienthoai[],int somau){
 		}
 	}
 }
-void sapxepten(DIENTHOAI dienthoai[],int somau){
+void Sapxepten(DIENTHOAI dienthoai[],int somau){
 	DIENTHOAI temp;
 	for(int i=0;i<somau-1;i++){
 		for(int j=i+1;j<somau;j++){
@@ -98,8 +101,8 @@ void sapxepten(DIENTHOAI dienthoai[],int somau){
 			}
 		}
 	}
-}
-int thongke(DIENTHOAI dienthoai[],int somau,char DTcantim[]){
+}									 
+int Thongke(DIENTHOAI dienthoai[],int somau,char DTcantim[]){
 	int Dem = 0;
 	for(int i=0;i< somau;i++){
 		if(strcmp(dienthoai[i].hedieuhanh,DTcantim)==0){
@@ -116,44 +119,134 @@ void Inthongke(DIENTHOAI dienthoai[],int somau,char DTcantim[]){
 		printf("Co %d Mau Dien Thoai thuoc HDH %s!\n",thongke(dienthoai,somau,DTcantim),DTcantim);
 	}
 }
-void menu(DIENTHOAI dienthoai[],int DTcanxoa,int somau){
+void Suadienthoai(DIENTHOAI dienthoai[],int somau){
+	bool DTdaco=false;
+	char id[30];
+	printf("Nhap id Mau Dien Thoai can Sua:");
+	fflush(stdin);
+	gets(id);
+	for(int i = 0;i < somau;i++){
+		if(strcmp(id,dienthoai[i].id) == 0){
+			printf("\n-------------------SUA THONG TIN DIEN THOAI---------------------\n");
+			Nhap(&dienthoai[i]);
+			DTdaco = true;
+		}
+	}	
+	if(DTdaco){
+		printf("Sua Thong Tin Dien Thoai thanh cong!\n");
+	}
+	else{
+		printf("Khong co Mau Dien Thoai nay!\n");
+	}
+}
+void Xoadienthoai(DIENTHOAI dienthoai[],int DTcanxoa,int &somau){
+	printf("Nhap vao Mau Dien Thoai can xoa:");
+	scanf("%d",&DTcanxoa);
+	if(somau <= 0){
+		return;
+	}
+        if(DTcanxoa > 0 && DTcanxoa <= somau){
+	    for(int i = DTcanxoa - 1;i < somau ;i++){
+		    dienthoai[i]=dienthoai[i+1];
+	    }
+	    --somau;
+	    printf("\nXoa Dien Thoai thanh cong!\n");
+        }
+        else{
+    	    printf("\nKhong co Mau Dien Thoai can xoa!\n");
+	}
+}
+void XuatFile(DIENTHOAI dienthoai[], int somau, char fileName[]){
+    FILE * fp;
+    fp = fopen (fileName,"w");
+    fprintf(fp, "%s\t||%s\t\t\t||%s\t||%s\t||%s\n", "Id","Ten","He Dieu Hanh","So Luong","Gia Tien");
+    for(int i = 0;i < somau;i++){
+        fprintf(fp, "%-3s\t||%-17s\t||%-7s\t||%d\t\t||%0.1f\n", dienthoai[i].id,dienthoai[i].ten, dienthoai[i].hedieuhanh, dienthoai[i].soluong, dienthoai[i].giatien);
+    }
+    fclose (fp);
+}	
+void Menu(DIENTHOAI dienthoai[],int DTcanxoa,char DTcantim[],int somau,char fileName[]){
 	int luachon;
 	do{
-	    printf("---------------------MENU--------------------\n");
-	    printf("1.Xuat cac mau Dien Thoai\n");
-	    printf("2.Sap xep theo He Dieu Hanh\n");
-	    printf("3.Sap xep theo Ten Dien Thoai\n");
-	    printf("4.Sap xep theo id Dien Thoai\n");
-	    printf("5.Xoa Thong tin Dien Thoai\n");
-	    printf("6.Thoat!\n");
+	    printf("---------------------MENU CHUC NANG--------------------\n");
+	    printf("\t 1.Nhap vao Danh Sach Dien Thoai!\n");
+	    printf("\t 2.Xuat cac Mau Dien Thoai\n");
+	    printf("\t 3.Sap xep theo He Dieu Hanh\n");
+	    printf("\t 4.Sap xep theo Ten Dien Thoai\n");
+	    printf("\t 5.Sap xep theo Id Dien Thoai\n");
+            printf("\t 6.Thong Ke Dien Thoai theo He Dieu Hanh!\n");
+	    printf("\t 7.Sua Thong tin Dien Thoai!\n");
+	    printf("\t 8.Xoa Thong tin Dien Thoai\n");
+	    printf("\t 9.Xuat tep tin nhi phan!\n");
+	    printf("\t 10.Thoat!\n");
+	    printf("------------------------------------------------------\n");
 	    printf("-->lua chon cua ban:");
 	    scanf("%d",&luachon);
-    	switch(luachon){
+    	    switch(luachon){
 	    	case 1:
-			    xuatdienthoai(dienthoai,somau);
-			    break;
+    			printf("Ban da chon Nhap vao Danh Sach Dien Thoai!\n");
+    			Nhapdienthoai(dienthoai,somau);
+    			printf("\nBam phim bat ky de tiep tuc!\n");
+                        getch();
+    			break;
 	    	case 2:
-		        sapxephedieuhanh(dienthoai,somau);
-		        xuatdienthoai(dienthoai,somau);
+	    		printf("Ban Da Chon In ra Danh Sach Dien Thoai!\n");
+			    Xuatdienthoai(dienthoai,somau);
+			    printf("\nBam phim bat ky de tiep tuc!\n");
+                            getch();
 			    break;
 	    	case 3:
-		        sapxepten(dienthoai,somau);
-		        xuatdienthoai(dienthoai,somau);
-		    	break;
-    		case 4:
-		        sapxepid(dienthoai,somau);
-		        xuatdienthoai(dienthoai,somau);
-		    	break;
-		case 5:
-			xoadienthoai(dienthoai,DTcanxoa,somau);
-			xuatdienthoai(dienthoai,somau);
+	    		printf("Ban Da Chon Sap xep theo HE DIEU HANH!\n");
+		        Sapxephedieuhanh(dienthoai,somau);
+		        Xuatdienthoai(dienthoai,somau);
+		        printf("\nBam phim bat ky de tiep tuc!\n");
+                        getch();
 			break;
-	        case 6:
-			printf("ban da thoat!\n");
-			break;	
+	    	case 4:
+	    		printf("Ban da chon sap xep theo ten");
+		        Sapxepten(dienthoai,somau);
+		        Xuatdienthoai(dienthoai,somau);
+		        printf("\nBam phim bat ky de tiep tuc!\n");
+                        getch();
+		    	break;
+    		case 5:
+    			printf("Ban da chon sap xep theo ID");
+		        Sapxepid(dienthoai,somau);
+		        Xuatdienthoai(dienthoai,somau);
+		        printf("\nBam phim bat ky de tiep tuc!\n");
+                        getch();
+		    	break;
+		case 6:
+		    	printf("Ban Da chon Thong Ke Dien Thoai theo He Dieu Hanh!\n");
+		    	Inthongke(dienthoai,somau,DTcantim);
+		    	printf("\nBam phim bat ky de tiep tuc!\n");
+                        getch();
+		    	break;
+		case 7:
+		    	printf("Ban da chon Sua Thong Tin Dien Thoai!\n");
+		    	Suadienthoai(dienthoai,somau);
+		    	printf("\nBam phim bat ky de tiep tuc!\n");
+                        getch();
+		    	break;
+		case 8:
+		    	printf("--------------XOA DIEN THOAI--------------\n");
+			Xoadienthoai(dienthoai,DTcanxoa,somau);
+		        Xuatdienthoai(dienthoai,somau);
+		        printf("\nBam phim bat ky de tiep tuc!\n");
+                        getch();
+		        break;
+		case 9:
+		        printf("Ban da chon xuat DS DT!\n");
+		        XuatFile(dienthoai,somau,fileName);
+			printf("Ban da xuat thanh cong vao file %s!\n",fileName);
+			printf("\nBam phim bat ky de tiep tuc!\n");
+                        getch();
+		case 10:
+			printf("Ban da thoat!\n");
+		        break;	
 	    	default:
 		        printf("hay nhap lai!\n");
 		    	break;
 	    }
-	}while(luachon !=6);
+	}while(luachon !=10);
 }
