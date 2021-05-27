@@ -191,10 +191,10 @@ void Menu(DIENTHOAI dienthoai[],int DTcanxoa,char DTcantim[],int somau,char file
     			break;
 	    	case 2:
 	    		printf("Ban Da Chon In ra Danh Sach Dien Thoai!\n");
-			    Xuatdienthoai(dienthoai,somau);
-			    printf("\nBam phim bat ky de tiep tuc!\n");
-                            getch();
-			    break;
+			Xuatdienthoai(dienthoai,somau);
+			printf("\nBam phim bat ky de tiep tuc!\n");
+                        getch();
+			break;
 	    	case 3:
 	    		printf("Ban Da Chon Sap xep theo HE DIEU HANH!\n");
 		        Sapxephedieuhanh(dienthoai,somau);
