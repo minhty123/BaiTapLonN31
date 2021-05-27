@@ -102,7 +102,7 @@ void Sapxepten(DIENTHOAI dienthoai[],int somau){
 		}
 	}
 }									 
-int Thongke(DIENTHOAI dienthoai[],int somau,char DTcantim[]){
+int Thongke(DIENTHOAI dienthoai[],int somau,char DTcantim[30]){
 	int Dem = 0;
 	for(int i=0;i< somau;i++){
 		if(strcmp(dienthoai[i].hedieuhanh,DTcantim)==0){
@@ -111,7 +111,7 @@ int Thongke(DIENTHOAI dienthoai[],int somau,char DTcantim[]){
 	}
 	return Dem;
 }
-void Inthongke(DIENTHOAI dienthoai[],int somau,char DTcantim[]){
+void Inthongke(DIENTHOAI dienthoai[],int somau,char DTcantim[30]){
 	if(somau != 0){
 		DTcantim="Ios";
 		printf("Co %d Mau Dien Thoai thuoc HDH %s!\n",thongke(dienthoai,somau,DTcantim),DTcantim);
